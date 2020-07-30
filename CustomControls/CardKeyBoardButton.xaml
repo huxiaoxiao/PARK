@@ -1,0 +1,60 @@
+﻿<UserControl x:Class="PARK.CustomControls.CardKeyBoardButton"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:PARK.CustomControls"
+             mc:Ignorable="d" 
+             d:DesignHeight="50" d:DesignWidth="65">
+    <UserControl.Resources>
+        <Style TargetType="{x:Type Button}" x:Key="DefaultButton">
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="FontFamily" Value="Microsoft YaHei"/>
+            <Setter Property="FontSize" Value="22"/>
+            <Setter Property="FontWeight" Value="Normal"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border  x:Name="boder"  BorderBrush="{TemplateBinding Control.BorderBrush}" BorderThickness="5,4,5,4" CornerRadius="3,3,3,3">
+                            <Border.Background>
+                                <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                                    <GradientStop Color="#FFE5E5F3" Offset="0.639" />
+                                    <GradientStop Color="#FF829BC5" Offset="0.196" />
+                                    <GradientStop Color="#FFC9DDF5" Offset="0.03" />
+                                </LinearGradientBrush>
+                            </Border.Background>
+
+                            <ContentPresenter Content="{TemplateBinding ContentControl.Content}" HorizontalAlignment="Center" VerticalAlignment="Center" ></ContentPresenter>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsPressed"   Value="true">
+                                <Setter Property="Background" TargetName="boder" Value="White"/>
+                            </Trigger>
+                            <Trigger Property="IsEnabled"   Value="False">
+                                <Setter Property="Background" TargetName="boder" Value="#FF7295C9"/>
+                                <Setter Property="Opacity" Value="0.5"></Setter>
+
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+
+                </Setter.Value>
+
+            </Setter>
+        </Style>
+    </UserControl.Resources>
+    <Grid   Background="{Binding Btn_Background}"  Height="50" Width="65" >
+        <Border PreviewMouseDown="CardKeyBoardButton_PreviewMouseDown" Height="40" Width="65"    >
+            <Button  Style="{DynamicResource DefaultButton}"  Content="{Binding BtnValue}" IsEnabled="{Binding Btn_Enabled}" Height="40" Width="50"    >
+                <Button.BorderBrush>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="#FF337BD1" Offset="0"/>
+                        <GradientStop Color="Transparent" Offset="0.5"/>
+                        <GradientStop Color="#FF337BD1" Offset="1"/>
+                    </LinearGradientBrush>
+                </Button.BorderBrush>
+            </Button>
+        </Border>
+
+    </Grid>
+</UserControl>

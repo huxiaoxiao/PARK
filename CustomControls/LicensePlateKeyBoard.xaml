@@ -1,0 +1,18 @@
+﻿<Window x:Class="PARK.CustomControls.LicensePlateKeyBoard"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PARK.CustomControls"
+        mc:Ignorable="d"
+        AllowsTransparency="True"
+        WindowStyle="None"
+         SizeToContent="WidthAndHeight"
+        Background="Transparent" 
+        x:Name="CardKeyBoardWinow"
+        >
+    <Grid x:Name="content">
+        <local:CardKeyBoardAlphanumeric  x:Name="CardKeyBoardA" Margin="0"   ></local:CardKeyBoardAlphanumeric>
+        <local:CardKeyBoardProvince   x:Name="CardKeyBoardP" Margin="0"  ></local:CardKeyBoardProvince>
+    </Grid>
+</Window>

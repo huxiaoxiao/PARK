@@ -1,0 +1,155 @@
+﻿<Page x:Class="PARK.Pages.BindCardNoSucceedPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:PARK.Pages"
+      mc:Ignorable="d" 
+      
+      Title="BindCardNoSucceed">
+
+    <Page.Resources>
+        <SolidColorBrush x:Key="TextBox.Static.Border" Color="Gray"/>
+        <SolidColorBrush x:Key="TextBox.MouseOver.Border" Color="#6495ED"/>
+        <SolidColorBrush x:Key="TextBox.Focus.Border" Color="#4169E1"/>
+        <Style x:Key="DefaultTextBox" TargetType="{x:Type TextBox}">
+            <Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.WindowBrushKey}}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource TextBox.Static.Border}"/>
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="KeyboardNavigation.TabNavigation" Value="None"/>
+            <Setter Property="HorizontalContentAlignment" Value="Left"/>
+            <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+            <Setter Property="AllowDrop" Value="true"/>
+            <Setter Property="ScrollViewer.PanningMode" Value="VerticalFirst"/>
+            <Setter Property="Stylus.IsFlicksEnabled" Value="False"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type TextBox}">
+                        <!--背景、边框-->
+                        <Border x:Name="border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}"     SnapsToDevicePixels="True" CornerRadius="5">
+                            <Border.Background>
+                                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                    <GradientStop Color="#FFE3E3E3" Offset="0"/>
+                                    <GradientStop Color="AliceBlue" Offset="1"/>
+                                </LinearGradientBrush>
+                            </Border.Background>
+                            <ScrollViewer x:Name="PART_ContentHost" Focusable="false" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden"></ScrollViewer>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsEnabled" Value="false">
+                                <Setter Property="Opacity" TargetName="border" Value="0.56"/>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource TextBox.MouseOver.Border}"/>
+                            </Trigger>
+                            <Trigger Property="IsKeyboardFocused" Value="true">
+                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource TextBox.Focus.Border}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <MultiTrigger>
+                    <MultiTrigger.Conditions>
+                        <Condition Property="IsInactiveSelectionHighlightEnabled" Value="true"/>
+                        <Condition Property="IsSelectionActive" Value="false"/>
+                    </MultiTrigger.Conditions>
+                    <Setter Property="SelectionBrush" Value="{DynamicResource {x:Static SystemColors.InactiveSelectionHighlightBrushKey}}"/>
+                </MultiTrigger>
+            </Style.Triggers>
+        </Style>
+
+        <!--自定义颜色-->
+        <LinearGradientBrush x:Key="LinearGradientBlueBackground" EndPoint="0.5,1" StartPoint="0.5,0">
+            <GradientStop Color="#5384D9" Offset="0" />
+            <GradientStop Color="#5384D9" Offset="1" />
+        </LinearGradientBrush>
+        <SolidColorBrush x:Key="MyBtnBorderColor" Color="#FF2D78F4"></SolidColorBrush>
+        <SolidColorBrush x:Key="MyBtnHoverBackgroundColor" Color="#FF317EF3"></SolidColorBrush>
+        <!--END-->
+
+        <Style x:Key="DefaultButton" TargetType="{x:Type Button}" >
+            <Setter Property="Background" Value="{StaticResource LinearGradientBlueBackground}"></Setter>
+            <Setter Property="Foreground" Value="White"></Setter>
+            <Setter Property="BorderBrush" Value="{StaticResource MyBtnBorderColor}"></Setter>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border x:Name="border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}"
+                                SnapsToDevicePixels="true" CornerRadius="3,3,3,3">
+                            <ContentPresenter x:Name="contentPresenter"
+                                              Focusable="False"
+                                              HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                              Margin="{TemplateBinding Padding}"
+                                              RecognizesAccessKey="True"
+                                              SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                                              VerticalAlignment="{TemplateBinding VerticalContentAlignment}"  />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter Property="Background" TargetName="border" Value="{StaticResource MyBtnHoverBackgroundColor}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Page.Resources>
+    <Grid>
+        <Viewbox Stretch="Fill"  Name="PageView" >
+            <Viewbox.Effect>
+                <BlurEffect Radius="0" x:Name="ViewboxBlurEffect" />
+            </Viewbox.Effect>
+            <Canvas Width="1024" Height="768">
+                <!--背景-->
+                <Canvas Width="1024" Height="768">
+                    <Image Name="BackImage" Width="1024" Height="768" Source="pack://siteoforigin:,,,/Image/bg2.png" Stretch="Fill" />
+                </Canvas>
+                <TextBlock Canvas.Left="320" Canvas.Top="20" FontSize="36" Width="424" Height="49"  HorizontalAlignment="Center">
+                    <TextBlock.Foreground>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0.4">
+                            <GradientStop Color="#FFFFFF" Offset="0"/>
+                            <GradientStop Color="#447BEB" Offset="1"/>
+                        </LinearGradientBrush>
+                    </TextBlock.Foreground>
+                  
+                    欢迎使用馨泽停车系统
+                </TextBlock>
+                <Grid Canvas.Left="200" Canvas.Top="190" Background="White">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="40"></RowDefinition>
+                        <RowDefinition Height="auto"></RowDefinition>
+                        <RowDefinition Height="auto"></RowDefinition>
+                        <RowDefinition Height="150"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="650"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Name="TbResult"  Grid.Row="1" Grid.Column="0" FontSize="35" HorizontalAlignment="Center" Margin="20" FontWeight="Bold" >绑定成功</TextBlock>
+                    <StackPanel  Grid.Row="2" Grid.Column="0" >
+                        <TextBlock  FontSize="25" HorizontalAlignment="Center" Margin="20" Foreground="Gray">有效时间：</TextBlock>
+                        <TextBlock Name="TbTime"  FontSize="25" HorizontalAlignment="Center" Margin="20" Foreground="Gray"></TextBlock>
+                    </StackPanel>
+                    <Button x:Name="BtnBindSuccess"  Grid.Row="3" Grid.Column="0" Padding="5" Width="450" Height="65" HorizontalContentAlignment="Center"
+                            VerticalContentAlignment="Center" 
+                            Style="{DynamicResource DefaultButton}"
+                            FontSize="30"
+                            PreviewMouseDown="BindFinishBtn_PreviewMouseDown">完成</Button>
+                </Grid>
+                <WrapPanel   Margin="40" Canvas.Left="380" Canvas.Top="500">
+                   
+
+                </WrapPanel>
+
+
+            </Canvas>
+        </Viewbox>
+        <Viewbox Name="FrameView" Stretch="Fill" Visibility="Hidden">
+            <Canvas Width="1024" Height="768">
+                <Frame Name="FramePage" Width="1024" Height="768" Visibility="Hidden" NavigationUIVisibility="Hidden" />
+            </Canvas>
+        </Viewbox>
+    </Grid>
+</Page>

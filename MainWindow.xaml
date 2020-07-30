@@ -1,0 +1,31 @@
+﻿<Window x:Class="PARK.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PARK"
+        mc:Ignorable="d"
+        Name="MainWin"
+        Title="停车场" MouseUp="MainWin_MouseUp" 
+        Width="1024" Height="768" WindowStyle="None">
+    <Window.Resources>
+
+       
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0" />
+            <RowDefinition />
+            <RowDefinition Height="0" />
+        </Grid.RowDefinitions>
+        <Viewbox Grid.Row="1" Stretch="Fill">
+            <Viewbox.Effect>
+                <BlurEffect Radius="0" RenderingBias="Performance" x:Name="ViewEffect" />
+            </Viewbox.Effect>
+            <Frame Name="indexFrame" Grid.Row="1" NavigationUIVisibility="Hidden" >
+               
+            </Frame>
+        </Viewbox>
+       
+    </Grid>
+</Window>
